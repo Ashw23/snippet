@@ -57,98 +57,28 @@ public class Solution {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Integer> A1 = new ArrayList<Integer>();
-		ArrayList<Integer> A2 = new ArrayList<Integer>();
-		ArrayList<Integer> A3 = new ArrayList<Integer>();
-		ArrayList<Integer> A4 = new ArrayList<Integer>();
-		ArrayList<Integer> A5 = new ArrayList<Integer>();
-		ArrayList<Integer> A6 = new ArrayList<Integer>();
+		
 
 		A1.add(1);
 		A1.add(3);
 		A1.add(5);
 		A1.add(-9);
-		A1.add(11); // o/p
+		A1.add(11); 
 
-		A2.add(-846930886);
-		A2.add(-1714636915);
-		A2.add(424238335);
-		A2.add(-1649760492); // o/p 424238335
+		
 
-		A3.add(1967513926);
-		A3.add(1540383426);
-		A3.add(-1303455736);
-		A3.add(-521595368); // o/p [1967513926, 1540383426]
-
-		A4.add(756898537);
-		A4.add(-1973594324);
-		A4.add(-2038664370);
-		A4.add(-184803526);
-		A4.add(1424268980); // o/p 1424268980
-
-		A5.add(1);
-		A5.add(2);
-		A5.add(3);
-		A5.add(-7);
-		A5.add(4); // o/p [1,2,3]
-
-		A6.add(0);
-		A6.add(0);
-		A6.add(-1);
-		A6.add(0); // o/p [0, 0]
-
-	/*	ArrayList<Integer> resultList1 = maxset(A1);
+		ArrayList<Integer> resultList1 = maxset(A1);
 		for (int i : resultList1) {
 			System.out.println(i);
 		}
-		ArrayList<Integer> resultList2 = maxset(A2);
-		for (int i : resultList2) {
-			System.out.println(i);
-		}
-		ArrayList<Integer> resultList3 = maxset(A3);
-		for (int i : resultList3) {
-			System.out.println(i);
-		}
-		ArrayList<Integer> resultList4 = maxset(A4);
-		for (int i : resultList4) {
-			System.out.println(i);
-		}
-		ArrayList<Integer> resultList5 = maxset(A5);
-		for (int i : resultList5) {
-			System.out.println(i);
-		}*/
-		ArrayList<Integer> resultList6 = maxset(A6);
-		for (int i : resultList6) {
-			System.out.println("A6: " + i);
-		}
+		
 
 	}
 
 }
 
 
-/* Editorial
- * public ArrayList<Integer> maxset(ArrayList<Integer> a) {
-	    long maxSum = 0;
-	    long newSum = 0;
-	    ArrayList<Integer> maxArray = new ArrayList<Integer>();
-	    ArrayList<Integer> newArray = new ArrayList<Integer>();
-	    for (Integer i : a) {
-	        if (i >= 0) {
-	            newSum += i;
-	            newArray.add(i);
-	        } else {
-	            newSum = 0;
-	            newArray = new ArrayList<Integer>();
-	        }
-	        if ((maxSum < newSum) || ((maxSum == newSum) && (newArray.size() > maxArray.size()))) {
-	            maxSum = newSum;
-	            maxArray = newArray;
-	        }
-	    }
-	    return maxArray;
-	} */
-
-/*Fastest
+// one more approach
 public ArrayList<Integer> maxset(ArrayList<Integer> a) {
 	    long max=-1;
 	    long max1=0;
@@ -229,66 +159,5 @@ public ArrayList<Integer> maxset(ArrayList<Integer> a) {
 	    }
 	    
 	    return a;
-	}*/
+	}
 
-/*Light Weight
-public ArrayList<Integer> maxset(ArrayList<Integer> a) {
-long maxSums[] = new long[a.size()];
-int maxSumEnding[] = new int[a.size()]; //the end of a sub array the starts at the index of this array
-long wholeSum[] = new long[a.size()];
-boolean hitNegative[] = new boolean[a.size()];
-
-for(int ct=0;ct<a.size();ct++)
-{
-    maxSums[ct] = a.get(ct);
-    maxSumEnding[ct] = ct;
-    wholeSum[ct] = a.get(ct);
-    hitNegative[ct] = a.get(ct) < 0;
-    for(int ct2=0;ct2<ct;ct2++)
-    {
-        if(a.get(ct) < 0)
-            hitNegative[ct2] = true;
-        if(hitNegative[ct2])
-            continue;
-        
-        wholeSum[ct2]+=a.get(ct);
-        if(wholeSum[ct2] >= maxSums[ct2])
-        {
-            maxSums[ct2] = wholeSum[ct2];
-            maxSumEnding[ct2] = ct;
-        }
-    }
-}
-
-long biggestSum = maxSums[0];
-int biggestItr = 0;
-
-for(int ct=1;ct<a.size();ct++)
-{
-    if(biggestSum < maxSums[ct])
-    {
-        biggestSum = maxSums[ct];
-        biggestItr = ct;
-    }
-    else if(biggestSum == maxSums[ct])
-    {
-        if((maxSumEnding[ct] - ct) > ( maxSumEnding[biggestItr] - biggestItr))
-        {
-             biggestSum = maxSums[ct];
-             biggestItr = ct;
-        }
-    }
-}
-
-ArrayList<Integer> solution = new ArrayList<Integer>();
-
-if(biggestSum < 0)
-    return solution;
-
-for(int ct=biggestItr;ct<=maxSumEnding[biggestItr];ct++)
-{
-    solution.add(a.get(ct));
-}
-
-return solution;
-} */
